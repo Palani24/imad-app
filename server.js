@@ -6,14 +6,41 @@ var app = express();
 app.use(morgan('combined'));
 
 var articleOne = {
-    'title':'',
-    'heading':'',
-    'date':'',
-    'content':''
+    'title':'Article - One',
+    'heading':'Article One',
+    'date':'Sep 5,2016',
+    'content':' <p>This is article one</p>'
 };
 
 function createTemplate(data){
-    
+    var title = data.title;
+    var heading = data.heading;
+    var date = data.date;
+    var content = data.content;
+    var htmlTemplate = '<html>
+        <head>
+            <title>
+               ${title}
+            </title>
+        </head>
+        <body>
+            <div class='container'>
+                <div>
+                    <a href="/">Home</a>
+                </div>
+                <hr/>
+                <h3>${heading}</h3>
+                <div>
+                    ${date}
+                </div>
+                <div>
+                    ${content}
+                </div>
+            </div>    
+        </body>
+        </html>
+    ';
+    return htmlTemplate;
 }
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
