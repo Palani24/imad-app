@@ -5,12 +5,22 @@ var path = require('path');
 var app = express();
 app.use(morgan('combined'));
 
+var articleOne = {
+    'title':'',
+    'heading':'',
+    'date':'',
+    'content':''
+};
+
+function createTemplate(data){
+    
+}
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
 
 app.get('/article', function (req, res) {
-  res.sendFile(path.join(__dirname, 'ui', 'articleOne.html'));
+  res.send(createTemplate(articleOne));
 });
 
 app.get('/ui/style.css', function (req, res) {
