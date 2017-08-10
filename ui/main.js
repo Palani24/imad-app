@@ -14,7 +14,7 @@ button.onclick = function(){
     };
     request.open("GET","http://palani92er.imad.hasura-app.io/counter",true);
     request.send(null);
-    console.log('Loaded!'+ counter.toString() + request.responseText.toString());
+    console.log('Loaded!'+ request.responseText.toString());
     //counter = counter+1;
     //var span = document.getElementById("count");
     //span.innerHTML = counter.toString();
