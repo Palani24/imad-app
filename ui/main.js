@@ -26,8 +26,7 @@ var submit = document.getElementById("submit_btn").value;
 submit.onclick = function(){
     var request = new XMLHttpRequest();
     request.onreadystatechange = function(){
-      if(request.readystate == XMLHttpRequest.DONE){
-          if(request.status == 200){
+      
             var names = request.responseText;
             names = JSON.parse(names);
             var list = '';
@@ -36,8 +35,7 @@ submit.onclick = function(){
             }
             var ul = document.getElementById("nameList");
             ul.innerHTML = list;
-          }
-      }  
+         
     };
     var name = document.getElementById("name").value;
     request.open("GET","http://palani92er.imad.hasura-app.io/submitname?name="+name,true);
