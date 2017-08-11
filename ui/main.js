@@ -22,7 +22,7 @@ button.onclick = function(){
 
 
 //submit
-var submit = document.getElementById("submit_btn").value;
+var submit = document.getElementById("submit_btn");
 submit.onclick = function(){
     var request = new XMLHttpRequest();
     request.onreadystatechange = function(){
