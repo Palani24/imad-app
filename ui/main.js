@@ -22,19 +22,25 @@ button.onclick = function(){
 
 
 //submit
-var submit = document.getElementById("submit_btn");
+var submit = document.getElementById("submit_btn").value;
 submit.onclick = function(){
     var request = new XMLHttpRequest();
     request.onreadystatechange = function(){
       if(request.readystate == XMLHttpRequest.DONE){
           if(request.status == 200){
-            var counter =  request.responseText;
-            var span = document.getElementById("count");
-            span.innerHTML = counter.toString();
+            var names = request.responseText;
+            names = JSON.parse(names);
+            var list = '';
+            for(var i=0;i<names.length;i++){
+                list += '<li>'+names[i]+'</li>';
+            }
+            var ul = document.getElementById("nameList");
+            ul.innerHTML = list;
           }
       }  
     };
-    request.open("GET","http://palani92er.imad.hasura-app.io/submitname",true);
+    var name = document.getElementById("name").value;
+    request.open("GET","http://palani92er.imad.hasura-app.io/submitname?name="+name,true);
     request.send(null);
     
 };
